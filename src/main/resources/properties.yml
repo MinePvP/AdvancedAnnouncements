@@ -1,0 +1,8 @@
+name: Announcer
+version: 0.7
+description: Announcer is a Message Information System that Informs the Player with Custom Messages over a Time Interval.
+author: surtic86
+website: https://github.com/MinePvP/Announcer
+
+main: ch.minepvp.spout.announcer.Announcer
+platform: SERVER
