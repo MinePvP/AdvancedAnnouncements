@@ -62,7 +62,11 @@ public class MySQLMessageGroup implements MessageGroup {
     }
 
     public void removeWorld(Integer id) {
-        //To change body of implemented methods use File | Settings | File Templates.
+
+        mySQLWorlds.remove(id);
+
+
+
     }
 
     public String getPermission() {

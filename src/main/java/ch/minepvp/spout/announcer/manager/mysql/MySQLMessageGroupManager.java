@@ -114,7 +114,14 @@ public class MySQLMessageGroupManager implements MessageGroupManager {
 
         if ( messageGroups.size() > 0 ) {
 
+            for ( MessageGroup messageGroup : messageGroups ) {
 
+                // Save Worlds
+
+
+                // Save Messages
+
+            }
 
 
         }
