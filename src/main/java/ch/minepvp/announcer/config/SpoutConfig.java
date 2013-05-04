@@ -1,6 +1,7 @@
 package ch.minepvp.announcer.config;
 
 import ch.minepvp.announcer.Announcer;
+import ch.minepvp.announcer.loader.SpoutLoader;
 import org.spout.api.exception.ConfigurationException;
 import org.spout.api.util.config.ConfigurationHolderConfiguration;
 import org.spout.api.util.config.yaml.YamlConfiguration;
@@ -10,8 +11,13 @@ import java.util.List;
 
 public class SpoutConfig extends ConfigurationHolderConfiguration implements Config {
 
+    File file;
+
     public SpoutConfig(File dataFolder) {
 		super(new YamlConfiguration(new File(dataFolder, "config.yml")));
+
+        file = new File(dataFolder, "config.yml");
+
         load();
 	}
 
@@ -82,6 +88,11 @@ public class SpoutConfig extends ConfigurationHolderConfiguration implements Con
     @Override
     public Boolean has(String path) {
         return getNode(path).isAttached();
+    }
+
+    @Override
+    public File getFile() {
+        return new File( Announcer.getInstance().getCaller().getDataFolder(), "metrics.yml" );
     }
 
 }

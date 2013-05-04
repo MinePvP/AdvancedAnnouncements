@@ -1,5 +1,7 @@
 package ch.minepvp.announcer.caller;
 
+import ch.minepvp.announcer.command.manager.CommandManager;
+import ch.minepvp.announcer.command.manager.spout.SpoutCommandManager;
 import ch.minepvp.announcer.loader.Loader;
 import ch.minepvp.announcer.loader.SpoutLoader;
 import ch.minepvp.announcer.messagegroup.MessageGroup;
@@ -34,6 +36,11 @@ public class SpoutCaller implements Caller {
     }
 
     @Override
+    public String getPluginVersion() {
+        return loader.getDescription().getVersion();
+    }
+
+    @Override
     public Integer getOnlinePlayers() {
         return ((Server) loader.getEngine()).getOnlinePlayers().length;
     }
@@ -50,6 +57,16 @@ public class SpoutCaller implements Caller {
 
         return player.hasPermission( permission );
 
+    }
+
+    @Override
+    public boolean hasWorld(String world) {
+
+        if ( loader.getEngine().getWorld(world) != null ) {
+            return true;
+        }
+
+        return false;
     }
 
     @Override
@@ -144,12 +161,17 @@ public class SpoutCaller implements Caller {
 
     @Override
     public void addRepeatingTask(Runnable runnable, Long delay, Long repeating) {
-        loader.getEngine().getScheduler().scheduleSyncRepeatingTask(loader, runnable, delay, repeating, TaskPriority.NORMAL);
+        loader.getEngine().getScheduler().scheduleSyncRepeatingTask(loader, runnable, delay * 60, repeating * 60, TaskPriority.NORMAL);
     }
 
     @Override
     public void stopAllTasks() {
         loader.getEngine().getScheduler().cancelAllTasks();
+    }
+
+    @Override
+    public void addCommand(String name, String help, CommandManager manager) {
+        loader.getEngine().getRootCommand().addSubCommand(loader, name).setHelp(help).setExecutor((SpoutCommandManager) manager);
     }
 
 

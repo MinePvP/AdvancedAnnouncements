@@ -10,15 +10,14 @@ public class BukkitLoader extends JavaPlugin implements Loader {
     public void onEnable() {
         new Announcer(this, getLogger());
 
-        //Register commands
-
-
         getLogger().info("enabled");
     }
 
     @Override
     public void onDisable() {
+        Announcer.getInstance().disable();
 
+        getLogger().info("disabled");
     }
 
     @Override

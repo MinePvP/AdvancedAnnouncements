@@ -7,5 +7,5 @@ author: surtic86
 website: https://github.com/MinePvP/Announcer
 
 commands:
-  announce:
+  announcer:
     description: Main Command

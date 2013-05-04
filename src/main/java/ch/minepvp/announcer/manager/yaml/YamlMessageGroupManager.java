@@ -35,9 +35,6 @@ public class YamlMessageGroupManager implements MessageGroupManager {
 
         if ( config.has("MessageGroups") ) {
 
-            plugin.getLogger().info("Groups : " + plugin.getConfig().getChildrenSize("MessageGroups"));
-
-
             // Get all Groups
             for ( int i = 0; i < plugin.getConfig().getChildrenSize("MessageGroups"); i++ ) {
 

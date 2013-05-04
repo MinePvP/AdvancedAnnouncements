@@ -4,6 +4,7 @@ import ch.minepvp.announcer.Announcer;
 import ch.minepvp.announcer.loader.BukkitLoader;
 import org.bukkit.configuration.file.FileConfiguration;
 
+import java.io.File;
 import java.util.List;
 
 public class BukkitConfig implements Config {
@@ -65,6 +66,11 @@ public class BukkitConfig implements Config {
     @Override
     public Boolean has(String path) {
         return config.contains(path);
+    }
+
+    @Override
+    public File getFile() {
+        return new File( Announcer.getInstance().getCaller().getDataFolder() , "metrics.yml");
     }
 
 }

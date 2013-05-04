@@ -23,6 +23,6 @@ public interface Config {
 
     public Boolean has( String path );
 
-    //public File getFile();
+    public File getFile();
 
 }
