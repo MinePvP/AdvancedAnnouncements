@@ -9,54 +9,72 @@ public class ListCommand extends AnnouncerCommand {
     public void execute( String sender, String[] args ) {
 
         sendMessage(sender, "{{BLUE}}-----------------------------------------------------");
-        sendMessage(sender, "{{YELLOW}}MessageGroups");
-        sendMessage(sender, "{{BLUE}}-----------------------------------------------------");
 
-        int i = 0;
+        if ( args.length > 0 ) {
 
-        for ( MessageGroup messageGroup : messageGroupManager.getMessageGroups() ) {
-
-            sendMessage(sender, "{{BLUE}}ID : {{YELLOW}}" + i);
-            sendMessage(sender, "{{BLUE}}  Worlds");
-
-            int j = 0;
-
-            for ( String world : messageGroup.getWorlds() ) {
-                sendMessage(sender, "     {{YELLOW}}" + j + "{{WHITE}} - {{WHITE}}" + world);
-                j++;
-            }
-
-            sendMessage(sender, "{{BLUE}}  Permission : {{WHITE}}" + messageGroup.getPermission());
-            sendMessage(sender, "{{BLUE}}  Settings :");
-            sendMessage(sender, "{{BLUE}}    Interval : {{WHITE}}" + messageGroup.getInterval());
-            sendMessage(sender, "{{BLUE}}    Random : {{WHITE}}" + messageGroup.getRandom());
-            sendMessage(sender, "{{BLUE}}    Prefix : {{WHITE}}" + messageGroup.getPrefix());
-
-
-            sendMessage(sender, "{{BLUE}}  Messages");
-
-            j = 0;
-
-            for ( String message : messageGroup.getMessages() ) {
-                sendMessage(sender, "     {{YELLOW}}" + j + "{{WHITE}} - {{WHITE}}" + message);
-                j++;
-            }
-
+            sendMessage(sender, "{{YELLOW}}MessageGroup");
             sendMessage(sender, "{{BLUE}}-----------------------------------------------------");
 
-            i++;
+            listMessageGroup(sender, messageGroupManager.getMessageGroups().get( Integer.parseInt(args[0])), Integer.parseInt(args[0] ));
+
+        } else {
+
+            sendMessage(sender, "{{YELLOW}}MessageGroups");
+            sendMessage(sender, "{{BLUE}}-----------------------------------------------------");
+
+            int i = 0;
+
+            for ( MessageGroup messageGroup : messageGroupManager.getMessageGroups() ) {
+
+                listMessageGroup(sender, messageGroup, i);
+
+                i++;
+            }
+
         }
+
+    }
+
+    private void listMessageGroup( String sender, MessageGroup messageGroup, Integer id ) {
+
+        sendMessage(sender, "{{BLUE}}ID : {{YELLOW}}" + id);
+        sendMessage(sender, "{{BLUE}}  Worlds");
+
+        int j = 0;
+
+        for ( String world : messageGroup.getWorlds() ) {
+            sendMessage(sender, "     {{YELLOW}}" + j + "{{WHITE}} - {{WHITE}}" + world);
+            j++;
+        }
+
+        sendMessage(sender, "{{BLUE}}  Permission : {{WHITE}}" + messageGroup.getPermission());
+        sendMessage(sender, "{{BLUE}}  Settings :");
+        sendMessage(sender, "{{BLUE}}    Interval : {{WHITE}}" + messageGroup.getInterval());
+        sendMessage(sender, "{{BLUE}}    Random : {{WHITE}}" + messageGroup.getRandom());
+        sendMessage(sender, "{{BLUE}}    Prefix : {{WHITE}}" + messageGroup.getPrefix());
+
+
+        sendMessage(sender, "{{BLUE}}  Messages");
+
+        j = 0;
+
+        for ( String message : messageGroup.getMessages() ) {
+            sendMessage(sender, "     {{YELLOW}}" + j + "{{WHITE}} - {{WHITE}}" + message);
+            j++;
+        }
+
+        sendMessage(sender, "{{BLUE}}-----------------------------------------------------");
 
     }
 
     @Override
     public String help() {
-        return "{{WHITE}}/announcer list";
+        return "{{WHITE}}/announcer list /announcer list <MessageGroup ID>";
     }
 
     @Override
     public int maxArgs() {
-        return 0;
+        return 1;
     }
 
     @Override
