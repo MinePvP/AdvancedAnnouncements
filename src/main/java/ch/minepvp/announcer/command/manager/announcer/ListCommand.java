@@ -1,21 +1,22 @@
 package ch.minepvp.announcer.command.manager.announcer;
 
 import ch.minepvp.announcer.command.AnnouncerCommand;
+import ch.minepvp.announcer.command.CommandArgs;
 import ch.minepvp.announcer.messagegroup.MessageGroup;
 
 public class ListCommand extends AnnouncerCommand {
 
     @Override
-    public void execute( String sender, String[] args ) {
+    public void execute( String sender, CommandArgs args ) {
 
         sendMessage(sender, "{{BLUE}}-----------------------------------------------------");
 
-        if ( args.length > 0 ) {
+        if ( args.getArguments().size() > 0 ) {
 
             sendMessage(sender, "{{YELLOW}}MessageGroup");
             sendMessage(sender, "{{BLUE}}-----------------------------------------------------");
 
-            listMessageGroup(sender, messageGroupManager.getMessageGroups().get( Integer.parseInt(args[0])), Integer.parseInt(args[0] ));
+            listMessageGroup(sender, messageGroupManager.getMessageGroups().get( args.getInteger(0) ), args.getInteger(0));
 
         } else {
 

@@ -9,7 +9,7 @@ public abstract class AnnouncerCommand {
     protected MessageGroupManager messageGroupManager = Announcer.getInstance().getMessageGroupManager();
 
 
-    public abstract void execute(String sender, String[] args);
+    public abstract void execute(String sender, CommandArgs args);
 
     public boolean hasPermission(String sender) {
         boolean result = true;

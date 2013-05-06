@@ -19,12 +19,12 @@ public class CommandHandler {
         subCommands.put(name, command);
     }
 
-    public void execute( String sender, String name, String[] args ) {
+    public void execute( String sender, CommandArgs args ) {
 
 
-        if ( subCommands.containsKey(name) ) {
+        if ( subCommands.containsKey( args.getSubcommand() ) ) {
 
-            AnnouncerCommand command = subCommands.get(name);
+            AnnouncerCommand command = subCommands.get( args.getSubcommand() );
 
             // Console?
             if ( !command.cliSupport() && sender.equalsIgnoreCase("console") ) {
@@ -35,7 +35,7 @@ public class CommandHandler {
 
             if ( command.hasPermission(sender) ) {
 
-                if (args.length >= command.minArgs() && args.length <= command.maxArgs()) {
+                if (args.getArguments().size() >= command.minArgs() && args.getArguments().size() <= command.maxArgs()) {
                     command.execute(sender, args);
                 } else {
                     Announcer.getInstance().getCaller().sendMessage(sender, "{{RED}}How to use the Command: " + command.help());

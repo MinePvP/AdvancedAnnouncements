@@ -56,7 +56,7 @@ public class Announcer {
 
         }
 
-         initialize();
+        initialize();
     }
 
     private void initialize() {

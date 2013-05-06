@@ -1,6 +1,7 @@
 package ch.minepvp.announcer.command.manager.bukkit;
 
 import ch.minepvp.announcer.Announcer;
+import ch.minepvp.announcer.command.CommandArgs;
 import ch.minepvp.announcer.command.manager.CommandManager;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,19 +14,22 @@ public class BukkitCommandManager implements CommandManager, CommandExecutor {
 
         if ( Announcer.getInstance().commandExist(command.getName()) ) {
 
-            String[] newargs;
 
-            if (args.length == 0) {
-                newargs = new String[0];
-                args = new String[1];
-                args[0] = "";
-            } else {
-                newargs = new String[args.length - 1];
-                System.arraycopy(args, 1, newargs, 0, args.length - 1);
+            CommandArgs cmdArgs = new CommandArgs();
+
+            cmdArgs.setCommand( command.getName() );
+            cmdArgs.setSubcommand( args[0] );
+
+            if ( args.length > 1 ) {
+
+                for ( int i = 1; i < args.length; i++ ) {
+                    cmdArgs.addArgument( args[i] );
+                }
+
             }
 
             Announcer.getInstance().getCommandHandler( command.getName() )
-                    .execute( commandSender.getName(), args[0], newargs );
+                    .execute( commandSender.getName(), cmdArgs );
 
             return true;
         }

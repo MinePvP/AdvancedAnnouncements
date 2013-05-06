@@ -1,11 +1,12 @@
 package ch.minepvp.announcer.command.manager.announcer;
 
 import ch.minepvp.announcer.command.AnnouncerCommand;
+import ch.minepvp.announcer.command.CommandArgs;
 
 public class HelpCommand extends AnnouncerCommand {
 
     @Override
-    public void execute(String sender, String[] args) {
+    public void execute(String sender, CommandArgs args) {
 
         sendMessage(sender, "{{BLUE}}-----------------------------------------------------");
         sendMessage(sender, "{{YELLOW}}Help");

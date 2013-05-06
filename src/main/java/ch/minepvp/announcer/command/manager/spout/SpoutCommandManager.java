@@ -1,12 +1,16 @@
 package ch.minepvp.announcer.command.manager.spout;
 
 import ch.minepvp.announcer.Announcer;
+import ch.minepvp.announcer.command.CommandArgs;
 import ch.minepvp.announcer.command.manager.CommandManager;
 import org.spout.api.command.Command;
 import org.spout.api.command.CommandContext;
 import org.spout.api.command.CommandExecutor;
 import org.spout.api.command.CommandSource;
 import org.spout.api.exception.CommandException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class SpoutCommandManager implements CommandManager, CommandExecutor {
 
@@ -15,24 +19,21 @@ public class SpoutCommandManager implements CommandManager, CommandExecutor {
 
         if (Announcer.getInstance().commandExist(command.getPreferredName())) {
 
-            String[] newargs;
+            CommandArgs cmdArgs = new CommandArgs();
 
-            if (args.length() == 0) {
-                newargs = new String[0];
-            } else {
-                newargs = new String[args.length() - 1];
-                for (int i = 1; i <= newargs.length; i++) {
-                    newargs[i - 1] = args.getString(i);
+            cmdArgs.setCommand(command.getPreferredName());
+            cmdArgs.setSubcommand(args.getString(0));
+
+            if ( args.length() > 1 ) {
+
+                for ( int i = 1; i < args.length(); i++ ) {
+                    cmdArgs.addArgument( args.getString(i) );
                 }
+
             }
 
-            if (args.length() == 0) {
-                Announcer.getInstance().getCommandHandler( command.getPreferredName() )
-                        .execute(commandSource.getName(), "", newargs);
-            } else {
-                Announcer.getInstance().getCommandHandler(command.getPreferredName())
-                        .execute(commandSource.getName(), args.getString(0), newargs);
-            }
+            Announcer.getInstance().getCommandHandler(command.getPreferredName())
+                    .execute(commandSource.getName(), cmdArgs);
 
         }
 

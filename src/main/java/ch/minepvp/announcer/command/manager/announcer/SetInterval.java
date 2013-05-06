@@ -1,18 +1,19 @@
 package ch.minepvp.announcer.command.manager.announcer;
 
 import ch.minepvp.announcer.command.AnnouncerCommand;
+import ch.minepvp.announcer.command.CommandArgs;
 
 public class SetInterval extends AnnouncerCommand {
 
     @Override
-    public void execute(String sender, String[] args) {
+    public void execute(String sender, CommandArgs args) {
 
-        if ( messageGroupManager.getMessageGroups().get( Integer.parseInt(args[0]) ) == null ) {
+        if ( messageGroupManager.getMessageGroups().get( args.getInteger(0) ) == null ) {
             sendMessage(sender, "{{RED}}The MessageGroup was not found!");
             return;
         }
 
-        messageGroupManager.getMessageGroups().get( Integer.parseInt(args[0]) ).setInterval( Long.parseLong(args[1]) );
+        messageGroupManager.getMessageGroups().get( args.getInteger(0) ).setInterval( args.getLong(1) );
         messageGroupManager.restartTasks();
         messageGroupManager.save();
 
