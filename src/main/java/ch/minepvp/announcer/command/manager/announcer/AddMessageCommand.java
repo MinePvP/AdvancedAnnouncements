@@ -6,7 +6,7 @@ public class AddMessageCommand extends AnnouncerCommand {
     @Override
     public void execute(String sender, String[] args) {
 
-        if ( messageGroupManager.getMessageGroups().get( Integer.getInteger(args[0]) ) == null ) {
+        if ( messageGroupManager.getMessageGroups().get( Integer.parseInt(args[0]) ) == null ) {
             sendMessage(sender, "{{RED}}The MessageGroup was not found!");
             return;
         }
@@ -17,7 +17,9 @@ public class AddMessageCommand extends AnnouncerCommand {
             string = string + " " + args[i];
         }
 
-        messageGroupManager.getMessageGroups().get( Integer.getInteger(args[0]) ).getMessages().add(string);
+        string = string.trim();
+
+        messageGroupManager.getMessageGroups().get( Integer.parseInt(args[0]) ).getMessages().add(string);
         messageGroupManager.save();
 
         sendMessage(sender, "{{GOLD}}Message added");

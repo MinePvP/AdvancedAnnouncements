@@ -9,7 +9,7 @@ public class ListCommand extends AnnouncerCommand {
     public void execute( String sender, String[] args ) {
 
         sendMessage(sender, "{{BLUE}}-----------------------------------------------------");
-        sendMessage(sender, "{{WHITE}}MessageGroups");
+        sendMessage(sender, "{{YELLOW}}MessageGroups");
         sendMessage(sender, "{{BLUE}}-----------------------------------------------------");
 
         int i = 0;
@@ -22,15 +22,15 @@ public class ListCommand extends AnnouncerCommand {
             int j = 0;
 
             for ( String world : messageGroup.getWorlds() ) {
-                sendMessage(sender, "     {{YELLOW}}" + j + "{{WHITE}} - {{YELLOW}}" + world);
+                sendMessage(sender, "     {{YELLOW}}" + j + "{{WHITE}} - {{WHITE}}" + world);
                 j++;
             }
 
-            sendMessage(sender, "{{BLUE}}  Permission : {{YELLOW}}" + messageGroup.getPermission());
+            sendMessage(sender, "{{BLUE}}  Permission : {{WHITE}}" + messageGroup.getPermission());
             sendMessage(sender, "{{BLUE}}  Settings :");
-            sendMessage(sender, "{{BLUE}}    Interval : {{YELLOW}}" + messageGroup.getInterval());
-            sendMessage(sender, "{{BLUE}}    Random : {{YELLOW}}" + messageGroup.getRandom());
-            sendMessage(sender, "{{BLUE}}    Prefix : {{YELLOW}}" + messageGroup.getPrefix());
+            sendMessage(sender, "{{BLUE}}    Interval : {{WHITE}}" + messageGroup.getInterval());
+            sendMessage(sender, "{{BLUE}}    Random : {{WHITE}}" + messageGroup.getRandom());
+            sendMessage(sender, "{{BLUE}}    Prefix : {{WHITE}}" + messageGroup.getPrefix());
 
 
             sendMessage(sender, "{{BLUE}}  Messages");
@@ -38,12 +38,13 @@ public class ListCommand extends AnnouncerCommand {
             j = 0;
 
             for ( String message : messageGroup.getMessages() ) {
-                sendMessage(sender, "     {{YELLOW}}" + j + "{{WHITE}} - {{YELLOW}}" + message);
+                sendMessage(sender, "     {{YELLOW}}" + j + "{{WHITE}} - {{WHITE}}" + message);
                 j++;
             }
 
             sendMessage(sender, "{{BLUE}}-----------------------------------------------------");
 
+            i++;
         }
 
     }

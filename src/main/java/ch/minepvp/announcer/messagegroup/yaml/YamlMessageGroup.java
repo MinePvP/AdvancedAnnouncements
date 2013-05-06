@@ -1,5 +1,6 @@
 package ch.minepvp.announcer.messagegroup.yaml;
 
+import ch.minepvp.announcer.Announcer;
 import ch.minepvp.announcer.messagegroup.MessageGroup;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class YamlMessageGroup implements MessageGroup {
     }
 
     public void removeWorld( Integer id ) {
-        this.worlds.remove(id);
+        this.worlds.remove( this.worlds.get(id) );
     }
 
     public String getPermission() {
@@ -68,7 +69,7 @@ public class YamlMessageGroup implements MessageGroup {
     }
 
     public void removeMessage(Integer id) {
-        this.messages.remove(id);
+        this.messages.remove( this.messages.get(id) );
     }
 
     public void addMessage(String message) {

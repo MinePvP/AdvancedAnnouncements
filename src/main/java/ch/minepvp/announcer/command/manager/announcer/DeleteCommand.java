@@ -4,19 +4,15 @@ import ch.minepvp.announcer.command.AnnouncerCommand;
 
 public class DeleteCommand extends AnnouncerCommand {
 
-    public DeleteCommand() {
-        messageGroupManager = announcer.getMessageGroupManager();
-    }
-
     @Override
     public void execute(String sender, String[] args) {
 
-        if ( messageGroupManager.getMessageGroups().get( Integer.getInteger(args[0]) ) == null ) {
+        if ( messageGroupManager.getMessageGroups().get( Integer.parseInt(args[0]) ) == null ) {
             sendMessage(sender, "{{RED}}The MessageGroup was not found!");
             return;
         }
 
-        messageGroupManager.removeMessageGroup( messageGroupManager.getMessageGroups().get( Integer.getInteger(args[0]) ) );
+        messageGroupManager.removeMessageGroup( messageGroupManager.getMessageGroups().get( Integer.parseInt(args[0]) ) );
         messageGroupManager.save();
 
         sendMessage(sender, "{{GOLD}}The MessageGroup deleted");

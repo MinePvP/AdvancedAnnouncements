@@ -7,12 +7,12 @@ public class SetRandomCommand extends AnnouncerCommand {
     @Override
     public void execute(String sender, String[] args) {
 
-        if ( messageGroupManager.getMessageGroups().get( Integer.getInteger(args[0]) ) == null ) {
+        if ( messageGroupManager.getMessageGroups().get( Integer.parseInt(args[0]) ) == null ) {
             sendMessage(sender, "{{RED}}The MessageGroup was not found!");
             return;
         }
 
-        messageGroupManager.getMessageGroups().get( Integer.getInteger(args[0]) ).setRandom( Boolean.parseBoolean(args[1]) );
+        messageGroupManager.getMessageGroups().get( Integer.parseInt(args[0]) ).setRandom( Boolean.parseBoolean(args[1]) );
         messageGroupManager.save();
 
         sendMessage(sender, "{{GOLD}}Random set");
