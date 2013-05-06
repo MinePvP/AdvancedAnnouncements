@@ -21,7 +21,7 @@ public class DeleteCommand extends AnnouncerCommand {
 
     @Override
     public String help() {
-        return "{{RED}}/announcer delete <MessageGroup ID>";
+        return "<MessageGroup ID>";
     }
 
     @Override
@@ -41,7 +41,7 @@ public class DeleteCommand extends AnnouncerCommand {
 
     @Override
     public String getPermissionNode() {
-        return "announcer.command.delete";
+        return "announcer.delete";
     }
 
 }

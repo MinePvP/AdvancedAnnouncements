@@ -174,5 +174,4 @@ public class SpoutCaller implements Caller {
         loader.getEngine().getRootCommand().addSubCommand(loader, name).setHelp(help).setExecutor((SpoutCommandManager) manager);
     }
 
-
 }

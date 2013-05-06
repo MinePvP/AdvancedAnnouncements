@@ -28,7 +28,7 @@ public class AddMessageCommand extends AnnouncerCommand {
 
     @Override
     public String help() {
-        return "{{RED}}/announcer addmessage <MessageGroup ID> This is a new Message";
+        return "<MessageGroup ID> This is a new Message";
     }
 
     @Override
@@ -48,6 +48,6 @@ public class AddMessageCommand extends AnnouncerCommand {
 
     @Override
     public String getPermissionNode() {
-        return "announcer.command.addmessage";
+        return "announcer.message.add";
     }
 }

@@ -22,7 +22,7 @@ public class SpoutCommandManager implements CommandManager, CommandExecutor {
             CommandArgs cmdArgs = new CommandArgs();
 
             cmdArgs.setCommand(command.getPreferredName());
-            cmdArgs.setSubcommand(args.getString(0));
+            cmdArgs.setSubCommand(args.getString(0));
 
             if ( args.length() > 1 ) {
 

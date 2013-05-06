@@ -22,7 +22,7 @@ public class SetPermissionCommand extends AnnouncerCommand {
 
     @Override
     public String help() {
-        return "{{RED}}/announcer setpermission <MessageGroup ID> <Permission>";
+        return "<MessageGroup ID> <Permission>";
     }
 
     @Override
@@ -42,7 +42,7 @@ public class SetPermissionCommand extends AnnouncerCommand {
 
     @Override
     public String getPermissionNode() {
-        return "announcer.command.setpermission";
+        return "announcer.set.permission";
     }
 
 }

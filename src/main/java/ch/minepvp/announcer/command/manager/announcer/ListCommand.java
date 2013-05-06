@@ -70,7 +70,7 @@ public class ListCommand extends AnnouncerCommand {
 
     @Override
     public String help() {
-        return "{{WHITE}}/announcer list /announcer list <MessageGroup ID>";
+        return "<MessageGroup ID>";
     }
 
     @Override
@@ -90,7 +90,7 @@ public class ListCommand extends AnnouncerCommand {
 
     @Override
     public String getPermissionNode() {
-        return "announcer.command.list";
+        return "announcer.list";
     }
 
 }

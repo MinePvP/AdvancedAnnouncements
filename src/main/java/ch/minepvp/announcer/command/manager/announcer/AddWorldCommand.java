@@ -26,7 +26,7 @@ public class AddWorldCommand extends AnnouncerCommand {
 
     @Override
     public String help() {
-        return "{{RED}}/announcer addworld <MessageGroup ID> <world_name>";
+        return "<MessageGroup ID> <world_name>";
     }
 
     @Override
@@ -46,7 +46,7 @@ public class AddWorldCommand extends AnnouncerCommand {
 
     @Override
     public String getPermissionNode() {
-        return "announcer.command.addworld";
+        return "announcer.world.add";
     }
 
 }

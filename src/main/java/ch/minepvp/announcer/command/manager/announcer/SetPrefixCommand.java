@@ -30,7 +30,7 @@ public class SetPrefixCommand extends AnnouncerCommand {
 
     @Override
     public String help() {
-        return "{{RED}}/announcer setprefix <MessageGroup ID> NEWPrefix :";
+        return "<MessageGroup ID> NEWPrefix :";
     }
 
     @Override
@@ -50,7 +50,7 @@ public class SetPrefixCommand extends AnnouncerCommand {
 
     @Override
     public String getPermissionNode() {
-        return "announcer.command.setprefix";
+        return "announcer.set.prefix";
     }
 
 }

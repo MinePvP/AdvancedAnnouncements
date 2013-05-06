@@ -13,7 +13,7 @@ public class NewCommand extends AnnouncerCommand{
 
     @Override
     public String help() {
-        return "{{RED}}/announcer new";
+        return "";
     }
 
     @Override
@@ -33,7 +33,7 @@ public class NewCommand extends AnnouncerCommand{
 
     @Override
     public String getPermissionNode() {
-        return "announcer.command.new";
+        return "announcer.new";
     }
 
 }

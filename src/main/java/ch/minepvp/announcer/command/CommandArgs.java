@@ -6,7 +6,7 @@ import java.util.List;
 public class CommandArgs {
 
     private String command = "";
-    private String subcommand = "";
+    private String subCommand = "";
 
     private List<String> arguments = new ArrayList<String>();
 
@@ -18,12 +18,12 @@ public class CommandArgs {
         this.command = command;
     }
 
-    public String getSubcommand() {
-        return subcommand;
+    public String getSubCommand() {
+        return subCommand;
     }
 
-    public void setSubcommand(String subcommand) {
-        this.subcommand = subcommand;
+    public void setSubCommand(String subcommand) {
+        this.subCommand = subcommand;
     }
 
     public List<String> getArguments() {

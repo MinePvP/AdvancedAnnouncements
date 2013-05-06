@@ -22,7 +22,7 @@ public class SetRandomCommand extends AnnouncerCommand {
 
     @Override
     public String help() {
-        return "{{RED}}/announcer setrandom <true|false>";
+        return "<true|false>";
     }
 
     @Override
@@ -42,7 +42,7 @@ public class SetRandomCommand extends AnnouncerCommand {
 
     @Override
     public String getPermissionNode() {
-        return "announcer.command.setrandom";
+        return "announcer.set.random";
     }
 
 }

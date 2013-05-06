@@ -26,7 +26,7 @@ public class RemoveWorldCommand extends AnnouncerCommand {
 
     @Override
     public String help() {
-        return "{{RED}}/announcer removeworld <MessageGroup ID> <World ID>";
+        return "<MessageGroup ID> <World ID>";
     }
 
     @Override
@@ -46,7 +46,7 @@ public class RemoveWorldCommand extends AnnouncerCommand {
 
     @Override
     public String getPermissionNode() {
-        return "announcer.command.removeworld";
+        return "announcer.world.remove";
     }
 
 }

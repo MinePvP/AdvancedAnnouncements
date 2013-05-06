@@ -23,7 +23,7 @@ public class SetInterval extends AnnouncerCommand {
 
     @Override
     public String help() {
-        return "{{RED}}/announcer setinterval <MessageGroup ID> <Minutes>";
+        return "<MessageGroup ID> <Minutes>";
     }
 
     @Override
@@ -43,7 +43,7 @@ public class SetInterval extends AnnouncerCommand {
 
     @Override
     public String getPermissionNode() {
-        return "announcer.command.setinterval";
+        return "announcer.set.interval";
     }
 
 }

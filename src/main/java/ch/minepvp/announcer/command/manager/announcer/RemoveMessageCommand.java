@@ -26,7 +26,7 @@ public class RemoveMessageCommand extends AnnouncerCommand {
 
     @Override
     public String help() {
-        return "{{RED}}/announcer removemessage <MesssageGroup ID> <Message ID>";
+        return "<MesssageGroup ID> <Message ID>";
     }
 
     @Override
@@ -46,7 +46,7 @@ public class RemoveMessageCommand extends AnnouncerCommand {
 
     @Override
     public String getPermissionNode() {
-        return "announcer.command.removemessage";
+        return "announcer.message.remove";
     }
 
 }
