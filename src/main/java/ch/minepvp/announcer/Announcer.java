@@ -127,15 +127,26 @@ public class Announcer {
         announcerCommand.registerSubCommand("delete", new DeleteCommand());
 
         announcerCommand.registerSubCommand("addmessage", new AddMessageCommand());
+        announcerCommand.registerSubCommand("adm", new AddMessageCommand());
         announcerCommand.registerSubCommand("removemessage", new RemoveMessageCommand());
+        announcerCommand.registerSubCommand("rmm", new RemoveMessageCommand());
 
         announcerCommand.registerSubCommand("addworld", new AddWorldCommand());
+        announcerCommand.registerSubCommand("adw", new AddWorldCommand());
         announcerCommand.registerSubCommand("removeworld", new RemoveWorldCommand());
+        announcerCommand.registerSubCommand("rmw", new RemoveWorldCommand());
 
         announcerCommand.registerSubCommand("setpermission", new SetPermissionCommand());
+        announcerCommand.registerSubCommand("setperm", new SetPermissionCommand());
+
         announcerCommand.registerSubCommand("setrandom", new SetRandomCommand());
+        announcerCommand.registerSubCommand("setrand", new SetRandomCommand());
+
         announcerCommand.registerSubCommand("setprefix", new SetPrefixCommand());
+        announcerCommand.registerSubCommand("setpre", new SetPrefixCommand());
+
         announcerCommand.registerSubCommand("setinterval", new SetInterval());
+        announcerCommand.registerSubCommand("setint", new SetInterval());
 
         commands.put("announcer", announcerCommand);
 
