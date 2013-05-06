@@ -1,6 +1,7 @@
 package ch.minepvp.announcer.manager.yaml;
 
 import ch.minepvp.announcer.Announcer;
+import ch.minepvp.announcer.ServerType;
 import ch.minepvp.announcer.config.Config;
 import ch.minepvp.announcer.manager.MessageGroupManager;
 import ch.minepvp.announcer.messagegroup.MessageGroup;
@@ -84,11 +85,15 @@ public class YamlMessageGroupManager implements MessageGroupManager {
         // Load Permission
         messageGroup.setPermission( config.getString("MessageGroups." + id + ".Permission") );
 
-        // Load Local
-        messageGroup.setLocal( config.getString("MessageGroups." + id + ".Local") );
+        if ( Announcer.getInstance().getCaller().getLoader().getServerType() == ServerType.SPOUT ) {
 
-        // Load ChatChannel
-        messageGroup.setChatChannel( config.getString("MessageGroups." + id + ".ChatChannel") );
+            // Load Local
+            messageGroup.setLocal( config.getString("MessageGroups." + id + ".Local") );
+
+            // Load ChatChannel
+            messageGroup.setChatChannel( config.getString("MessageGroups." + id + ".ChatChannel") );
+
+        }
 
         // Load Settings
         messageGroup.setInterval(config.getLong("MessageGroups." + id + ".Settings.Interval") );
@@ -120,11 +125,15 @@ public class YamlMessageGroupManager implements MessageGroupManager {
         // Save Permission
         config.setValue("MessageGroups." + id + ".Permission", messageGroups.get(id).getPermission() );
 
-        // Save Local
-        config.setValue("MessageGroups." + id + ".Local", messageGroups.get(id).getLocal() );
+        if ( Announcer.getInstance().getCaller().getLoader().getServerType() == ServerType.SPOUT ) {
 
-        // Save ChatChannel
-        config.setValue("MessageGroups." + id + ".ChatChannel", messageGroups.get(id).getChatChannel() );
+            // Save Local
+            config.setValue("MessageGroups." + id + ".Local", messageGroups.get(id).getLocal() );
+
+            // Save ChatChannel
+            config.setValue("MessageGroups." + id + ".ChatChannel", messageGroups.get(id).getChatChannel() );
+
+        }
 
         // Save Settings
         config.setValue("MessageGroups." + id + ".Settings.Interval", messageGroups.get(id).getInterval() );
