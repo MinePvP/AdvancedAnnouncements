@@ -17,6 +17,8 @@ public interface Config {
 
     public List<String> getStringList( String path );
 
+    public Integer getStringListSize( String path );
+
     public Integer getChildrenSize( String path );
 
     public void setValue( String path, Object value );

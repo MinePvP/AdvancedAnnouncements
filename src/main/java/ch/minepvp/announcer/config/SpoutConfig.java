@@ -69,6 +69,11 @@ public class SpoutConfig extends ConfigurationHolderConfiguration implements Con
     }
 
     @Override
+    public Integer getStringListSize(String path) {
+        return getNode(path).getStringList().size();
+    }
+
+    @Override
     public Integer getChildrenSize(String path) {
         return getNode(path).getChildren().size();
     }

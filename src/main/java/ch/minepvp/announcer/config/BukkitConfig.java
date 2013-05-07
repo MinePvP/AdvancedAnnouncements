@@ -46,12 +46,12 @@ public class BukkitConfig implements Config {
     }
 
     @Override
+    public Integer getStringListSize(String path) {
+        return config.getStringList(path).size();
+    }
+
+    @Override
     public Integer getChildrenSize(String path) {
-
-        if ( config.getConfigurationSection(path) == null ) {
-            return config.getStringList(path).size();
-        }
-
         return config.getConfigurationSection(path).getKeys(false).size();
     }
 

@@ -74,7 +74,7 @@ public class YamlMessageGroupManager implements MessageGroupManager {
         MessageGroup messageGroup = new YamlMessageGroup();
 
         // Load Worlds
-        if ( config.getChildrenSize("MessageGroups." + id + ".Worlds") > 0 ) {
+        if ( config.getStringListSize("MessageGroups." + id + ".Worlds") > 0 ) {
 
             for ( String world : config.getStringList("MessageGroups." + id + ".Worlds") ) {
                 messageGroup.addWorld(world);
@@ -100,8 +100,9 @@ public class YamlMessageGroupManager implements MessageGroupManager {
         messageGroup.setRandom(config.getBoolean("MessageGroups." + id + ".Settings.Random") );
         messageGroup.setPrefix(config.getString("MessageGroups." + id + ".Settings.Prefix") );
 
+
         // Load Messages
-        if ( config.getChildrenSize("MessageGroups." + id + ".Messages") > 0 ) {
+        if ( config.getStringListSize("MessageGroups." + id + ".Messages") > 0 ) {
 
             for ( String message : config.getStringList("MessageGroups." + id + ".Messages") ) {
                 messageGroup.addMessage( message );
