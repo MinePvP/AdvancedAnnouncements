@@ -17,7 +17,10 @@ public class BukkitCommandManager implements CommandManager, CommandExecutor {
             CommandArgs cmdArgs = new CommandArgs();
 
             cmdArgs.setCommand( command.getName() );
-            cmdArgs.setSubCommand( args[0] );
+
+            if ( args.length > 0 ) {
+                cmdArgs.setSubCommand( args[0] );
+            }
 
             if ( args.length > 1 ) {
 
