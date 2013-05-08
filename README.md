@@ -1,7 +1,7 @@
 # Announcer for SpoutServer
 
 
-Announcer is a Player Information Tool for the SpoutServer. You
+Announcer is a Player Information Tool for the Spout and Bukkit. You
 can add / remove Messages for all Players / per World ore per Permission.
 
 You can Output the Message per Order ore per Random and you can set a
@@ -32,8 +32,6 @@ Set a ChatChannel where the Message will send
 Set the Message output to Random ore in Order
 - /announcer interval <MessageGroup Id> <time>
 Set the Interval who send a Message
-- /announcer reload
-Reload the Configuration
 
 ## Permissions
 - announcer.help
@@ -47,7 +45,6 @@ Reload the Configuration
 - announcer.set.permission
 - announcer.set.random
 - announcer.set.interval
-- announcer.reload
 
 ## ChatStyle
 - BLACK
@@ -137,6 +134,9 @@ MessageGroups:
 
 
 ## Changelog
+
+### Version 0.8
+- added Bukkit Support
 
 ### Version 0.7
 - update for SpoutAPI
