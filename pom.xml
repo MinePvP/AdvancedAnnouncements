@@ -22,14 +22,10 @@
             <id>spout-repo</id>
             <url>http://repo.spout.org</url>
         </repository>
+
         <repository>
-            <id>nexus</id>
-            <name>nesus.alta189</name>
-            <url>http://repo.alta189.com/</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
+            <id>Plugin Metrics</id>
+            <url>http://repo.mcstats.org/content/repositories/public</url>
         </repository>
     </repositories>
 
@@ -41,12 +37,7 @@
     </pluginRepositories>
 
     <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
-        </dependency>
+        <!-- Servers -->
         <dependency>
             <groupId>org.spout</groupId>
             <artifactId>spoutapi</artifactId>
@@ -54,7 +45,15 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Shaded Dependencies -->
+        <dependency>
+            <groupId>org.bukkit</groupId>
+            <artifactId>bukkit</artifactId>
+            <version>1.5.2-R0.1</version>
+            <type>jar</type>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- SimpleSave -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -68,6 +67,14 @@
             <artifactId>simplesave</artifactId>
             <version>1.2.0-SNAPSHOT</version>
             <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Metrics -->
+        <dependency>
+            <groupId>org.mcstats.standalone</groupId>
+            <artifactId>metrics</artifactId>
+            <version>R6</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
