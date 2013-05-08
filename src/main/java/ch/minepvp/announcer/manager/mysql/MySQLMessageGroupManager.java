@@ -39,8 +39,8 @@ public class MySQLMessageGroupManager implements MessageGroupManager {
 
         try {
             db.registerTable(MySQLMessageGroup.class);
-            db.registerTable(MySQLMessage.class);
             db.registerTable(MySQLWorld.class);
+            db.registerTable(MySQLMessage.class);
         } catch (TableRegistrationException e) {
             e.printStackTrace();
         }
@@ -51,13 +51,14 @@ public class MySQLMessageGroupManager implements MessageGroupManager {
             e.printStackTrace();
         }
 
+        /*
         load();
 
         // DEBUG
         plugin.getLogger().info( "MessageGroups loaded from MySQL" + messageGroups.size() );
 
         startTasks();
-
+        */
     }
 
     public void load() {
@@ -102,9 +103,10 @@ public class MySQLMessageGroupManager implements MessageGroupManager {
 
             }
 
+        } else {
+            loadDefaultGroups();
+            save();
         }
-
-
 
     }
 
@@ -114,16 +116,11 @@ public class MySQLMessageGroupManager implements MessageGroupManager {
 
             for ( MessageGroup messageGroup : messageGroups ) {
 
-                // Save Worlds
-
-
-                // Save Messages
+                db.save(MySQLMessageGroup.class, messageGroup);
 
             }
 
-
         }
-
 
     }
 
@@ -132,22 +129,66 @@ public class MySQLMessageGroupManager implements MessageGroupManager {
         // Sample MessageGroups
         MessageGroup messageGroup = new MySQLMessageGroup();
 
+        messageGroup.addWorld("world");
+        messageGroup.addWorld("world_nether");
+        messageGroup.addWorld("the_end");
+
+        messageGroup.setPermission("announcer.rules");
+
+        messageGroup.setChatChannel("");
+
+        messageGroup.setPrefix("{{YELLOW}}RULES {{WHITE}}: ");
+
+        messageGroup.setRandom(false);
+        messageGroup.setInterval(20L);
+
+        messageGroup.addMessage("RULE 1");
+        messageGroup.addMessage("RULE 2");
+        messageGroup.addMessage("RULE 3");
+        messageGroup.addMessage("RULE 4");
+        messageGroup.addMessage("RULE 5");
+        messageGroup.addMessage("RULE 6");
+        messageGroup.addMessage("RULE 7");
+        messageGroup.addMessage("RULE 8");
+        messageGroup.addMessage("RULE 9");
 
 
+        messageGroups.add(messageGroup);
+
+        messageGroup = new MySQLMessageGroup();
+
+        messageGroup.addWorld("world");
+        messageGroup.addWorld("world_nether");
+
+        messageGroup.setPermission("announcer.tips");
+
+        messageGroup.setLocal("de_DE");
+
+        messageGroup.setChatChannel("");
+
+        messageGroup.setPrefix("{{YELLOW}}Tips {{WHITE}}: ");
+
+        messageGroup.setRandom(true);
+        messageGroup.setInterval(90L);
+
+        messageGroup.addMessage("Get a new Plot with /plot create");
+        messageGroup.addMessage("Get a new City with /city create");
+
+        messageGroups.add(messageGroup);
 
 
     }
 
-
-
-        public void createMessageGroup() {
+    public void createMessageGroup() {
 
         MessageGroup messageGroup = new MySQLMessageGroup();
+        db.save(MySQLMessageGroup.class, messageGroup);
         messageGroups.add(messageGroup);
 
     }
 
     public void removeMessageGroup( MessageGroup messageGroup ) {
+        db.remove(MySQLMessageGroup.class, messageGroup);
         messageGroups.remove(messageGroup);
     }
 
@@ -191,6 +232,10 @@ public class MySQLMessageGroupManager implements MessageGroupManager {
      */
     public ArrayList<MessageGroup> getMessageGroups() {
         return messageGroups;
+    }
+
+    public Database getDb() {
+        return this.db;
     }
 
 }

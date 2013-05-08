@@ -1,6 +1,9 @@
 package ch.minepvp.announcer.messagegroup.mysql;
 
+import ch.minepvp.announcer.Announcer;
+import ch.minepvp.announcer.manager.mysql.MySQLMessageGroupManager;
 import ch.minepvp.announcer.messagegroup.MessageGroup;
+import com.alta189.simplesave.Database;
 import com.alta189.simplesave.Field;
 import com.alta189.simplesave.Id;
 import com.alta189.simplesave.Table;
@@ -36,6 +39,7 @@ public class MySQLMessageGroup implements MessageGroup {
     private ArrayList<MySQLMessage> mySQLMessages;
     private ArrayList<MySQLWorld> mySQLWorlds;
 
+    private Database db = ((MySQLMessageGroupManager)Announcer.getInstance().getMessageGroupManager()).getDb();
 
     public ArrayList<String> getWorlds() {
 
@@ -58,14 +62,15 @@ public class MySQLMessageGroup implements MessageGroup {
         mySQLWorld.setWorld(world);
         mySQLWorld.setGroup(id);
 
+        db.save(MySQLMessage.class, mySQLWorld);
+        mySQLWorlds.add(mySQLWorld);
     }
 
     public void removeWorld(Integer id) {
 
+        db.remove(MySQLWorld.class, mySQLWorlds.get(id));
+
         mySQLWorlds.remove(id);
-
-
-
     }
 
     public String getPermission() {
@@ -101,11 +106,18 @@ public class MySQLMessageGroup implements MessageGroup {
     }
 
     public ArrayList<String> getMessages() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
 
-    public void removeMessage(Integer id) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        ArrayList<String> messages = new ArrayList<String>();
+
+        if ( mySQLWorlds.size() > 0 ) {
+
+            for ( MySQLMessage message : mySQLMessages ) {
+                messages.add(message.getMessage());
+            }
+
+        }
+
+        return messages;
     }
 
     public void addMessage(String message) {
@@ -114,8 +126,16 @@ public class MySQLMessageGroup implements MessageGroup {
         mySQLMessage.setMessage(message);
         mySQLMessage.setGroup(id);
 
+        db.save(MySQLMessage.class, mySQLMessage);
+        mySQLMessages.add(mySQLMessage);
     }
 
+    public void removeMessage(Integer id) {
+
+        db.remove(MySQLMessage.class, mySQLMessages.get(id));
+
+        this.mySQLMessages.remove(id);
+    }
 
     public String getChatChannel() {
         return chatChannel;
