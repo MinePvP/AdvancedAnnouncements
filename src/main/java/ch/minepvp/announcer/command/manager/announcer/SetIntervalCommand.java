@@ -3,7 +3,7 @@ package ch.minepvp.announcer.command.manager.announcer;
 import ch.minepvp.announcer.command.AnnouncerCommand;
 import ch.minepvp.announcer.command.CommandArgs;
 
-public class SetInterval extends AnnouncerCommand {
+public class SetIntervalCommand extends AnnouncerCommand {
 
     @Override
     public void execute(String sender, CommandArgs args) {
